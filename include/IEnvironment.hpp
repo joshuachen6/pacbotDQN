@@ -20,12 +20,12 @@ struct Replay {
  * @brief The environment for training
  *
  */
-struct Environment {
-  virtual ~Environment() = default;
+struct IEnvironment {
+  virtual ~IEnvironment() = default;
   /**
    * @brief Gets the observation of the space
    */
-  virtual torch::Tensor &getObservation() const = 0;
+  virtual const torch::Tensor &getObservation() = 0;
   /**
    * @brief Gets the reward
    *
@@ -43,7 +43,7 @@ struct Environment {
    *
    * @param action The action to take
    */
-  virtual void step(int action) = 0;
+  virtual void step(std::string action) = 0;
   /**
    * @brief Resets the environment
    */
