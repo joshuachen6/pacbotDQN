@@ -3,13 +3,11 @@
 #include <sqlite_orm/sqlite_orm.h>
 
 auto storage = sqlite_orm::make_storage(
-    "database.db", sqlite_orm::make_table(
-                       "ReplayBuffer",
-                       sqlite_orm::make_column("gameIndex", &Replay::gameIndex),
-                       sqlite_orm::make_column("stepIndex", &Replay::stepIndex),
-                       sqlite_orm::make_column("state", &Replay::state),
-                       sqlite_orm::make_column("action", &Replay::action),
-                       sqlite_orm::make_column("reward", &Replay::reward)));
+    "database.db",
+    sqlite_orm::make_table("ReplayBuffer",
+                           sqlite_orm::make_column("state", &Replay::state),
+                           sqlite_orm::make_column("action", &Replay::action),
+                           sqlite_orm::make_column("reward", &Replay::reward)));
 
 ReplayBuffer::ReplayBuffer() { spdlog::debug("Started Database"); }
 

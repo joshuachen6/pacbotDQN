@@ -7,9 +7,6 @@
  *
  */
 struct Replay {
-  int gameIndex;
-  int stepIndex;
-
   std::string state;
   int action;
   double reward;

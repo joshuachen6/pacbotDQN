@@ -22,9 +22,7 @@ PacmanEnvironment::PacmanEnvironment() {
    */
   observation = torch::zeros({4, 31, 28});
 
-  // Reset score
-  lastScore = 0;
-  score = 0;
+  reset();
 }
 
 PacmanEnvironment::~PacmanEnvironment() {
@@ -72,6 +70,16 @@ bool PacmanEnvironment::isTerminated() const { return terminated; }
 
 void PacmanEnvironment::step(std::string action) {
   _step(action.c_str(), action.size());
+  _update();
 }
 
-void PacmanEnvironment::reset() {}
+void PacmanEnvironment::reset() {
+  _reset();
+
+  // Reset observation
+  observation.zero_();
+
+  // Reset score
+  lastScore = 0;
+  score = 0;
+}
