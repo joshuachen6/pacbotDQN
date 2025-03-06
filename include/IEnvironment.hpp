@@ -7,9 +7,13 @@
  *
  */
 struct Replay {
+  long index;
+
   std::string state;
   int action;
   double reward;
+
+  long next;
 };
 
 /**
